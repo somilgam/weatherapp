@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        header ul{
+            background-color: rgb(24, 23, 66);
+            color: white;
+            height:100px;
+            margin-top:-10px
+        }
+        @keyframes rotate {
+            0%{
+                transform:rotate(0deg)
+            }
+            25%{
+                transform:rotate(90deg)
+            }
+            50%{
+                transform:rotate(180deg)
+            }
+            75%{
+                transform:rotate(270deg)
+            }
+            100%{
+                transform:rotate(360deg)
+            }
+
+        }
+        @keyframes fade {
+            to{
+                opacity: 0.5;
+            }
+        }
+        .fa-solid{
+            color: blue;
+            animation-name: rotate;
+            animation-duration: 4s;
+            animation-iteration-count: infinite;
+        }
+        header li{
+            padding-top: 40px;
+            list-style-type:none;
+            display: inline-block;
+            font-size: 16px;
+            
+        }
+        .w10{
+            width:10%;
+        }
+        .w65{
+            width:65%;
+        }
+        main{
+            display: flex;
+            padding-left: 18%;
+            padding-right: 5%;
+            margin-top: 180px;
+        }
+        #text{
+            width:60%
+        }
+        #picture{
+            width: 30%;
+            margin-left: -50px;
+        }
+        #p2{
+            font-size: 30px;
+        }
+        button{
+            border-radius: 50px;
+            border-color: aliceblue;
+        }
+        #pc1{
+            height:100%;
+            width:100%;
+            animation-name: fade;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+        }
+        ul a{
+            color: white;
+             text-decoration: none;
+        }
+        button a{
+            text-decoration: none;
+        }
+        a:active{
+            color:blue
+        }
+    </style>
+</head>
+
+<body>
+    {{>header}}
+    <main>
+        <div id="text">
+            <p id="p1">
+            Welcome to weather app
+            </p>
+            <p id="p2">
+                Get the latest weather info of your city
+            </p>
+            <p id="p3">
+                <button><a href="/weather">check now</a></button>
+            </p>
+        </div>
+        <div id="picture">
+            <img id="pc1" src="https://images.france.fr/zeaejvyq9bhj/3OJBtx9SHS6ySIoUIyIgAk/603e5bc48c0e5495f7e8170a8c9d94d2/1120x490_Climat_et_ge__ographie_-_Josephine_Herbelin.jpg?w=1120&h=490&q=70&fl=progressive&fit=fill">
+        </div>
+    </main>
+</body>
+</html>

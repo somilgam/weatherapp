@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Document</title>
+    <style>
+           header ul{
+            background-color: rgb(24, 23, 66);
+            color: white;
+            height:100px;
+            margin-top:-10px
+        }
+        @keyframes rotate {
+            0%{
+                transform:rotate(0deg)
+            }
+            25%{
+                transform:rotate(90deg)
+            }
+            50%{
+                transform:rotate(180deg)
+            }
+            75%{
+                transform:rotate(270deg)
+            }
+            100%{
+                transform:rotate(360deg)
+            }
+
+        }
+        @keyframes fade {
+            to{
+                opacity: 0.5;
+            }
+        }
+        .fa-solid{
+            color: blue;
+            animation-name: rotate;
+            animation-duration: 4s;
+            animation-iteration-count: infinite;
+        }
+        header li{
+            padding-top: 40px;
+            list-style-type:none;
+            display: inline-block;
+            font-size: 16px;
+            
+        }
+        .w10{
+            width:10%;
+        }
+        .w65{
+            width:65%;
+        }
+        main{
+            display: flex;
+            padding-left: 18%;
+            padding-right: 5%;
+            margin-top: 180px;
+        }
+        #text{
+            width:60%
+        }
+        #picture{
+            width: 30%;
+            margin-left: -50px;
+        }
+        #p2{
+            font-size: 30px;
+        }
+        button{
+            border-radius: 50px;
+            border-color: aliceblue;
+        }
+        #pc1{
+            height:100%;
+            width:100%;
+            animation-name: fade;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+        }
+        ul a{
+            color: white;
+             text-decoration: none;
+        }
+        button a{
+            text-decoration: none;
+        }
+        a:active{
+            color:blue
+        }
+        #container{
+            width:40%;
+            margin:auto;
+            margin-top:50px;
+            font-size: 60px;
+            border: 0.2px rgb(144, 144, 192) solid;
+            height:430px;
+        }
+        #l1{
+            margin-top:80px;
+            color:grey;
+            font-size:100px
+        }
+        @keyframes colorchange{
+            to{
+                color:blue
+            }
+        }
+        #l2{
+            animation-name: colorchange;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+        }
+
+    </style>
+</head>
+<body>
+    {{>header}}
+    <div id="container">
+       <div id="l1"><center> 404<Br></center></div>
+        <div id="l2"><center>page not found</center></div>
+    </div>
+</body>
+</html>

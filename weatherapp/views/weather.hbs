@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <Style>
+        header{
+            margin-bottom: 50px;
+        }
+           header ul{
+            background-color: rgb(24, 23, 66);
+            color: white;
+            height:100px;
+            margin-top:-10px
+        }
+        @keyframes rotate {
+            0%{
+                transform:rotate(0deg)
+            }
+            25%{
+                transform:rotate(90deg)
+            }
+            50%{
+                transform:rotate(180deg)
+            }
+            75%{
+                transform:rotate(270deg)
+            }
+            100%{
+                transform:rotate(360deg)
+            }
+
+        }
+         list .fa-solid{
+            color: blue;
+            animation-name: rotate;
+            animation-duration: 4s;
+            animation-iteration-count: infinite;
+        }
+        header li{
+            padding-top: 40px;
+            list-style-type:none;
+            display: inline-block;
+            font-size: 16px;
+        }
+        .w10{
+            width:10%;
+        }
+        .w65{
+            width:65%;
+        }
+         ul a{
+            color: white;
+            text-decoration: none;
+        }
+        #search{
+            width:600px;
+            background-color: black;
+            border-color: black;
+            color: white;
+            height:40px;
+            border-radius: 50px;
+        }
+        button{
+            border-radius: 50px;
+            background-color: rgb(33, 75, 104);
+            color:white;
+            height:40px;
+            width:65px;
+        }
+        #display{
+            background-color: rgb(80, 80, 124);
+            height:300px;
+            width:500px;
+            margin: auto;
+            margin-top: 50px;
+            color: white;
+            text-transform:uppercase       }
+       #time{
+        display: flex;
+        background-color:rgb(27, 27, 48) ;
+        height:70px;
+        font-size: 12px;
+       }
+       #day{
+        width:80%;
+        padding-top: 30px;
+        margin-left: 10px;
+       }
+       #date{
+        padding-top: 30px;
+       }
+       #city{
+        margin-top: 50px;
+        margin-bottom: 50px;
+        margin-left: 10px;
+        color: grey;
+        font-size:22px;
+       }
+       #temp{
+        font-size:80px;
+        margin-left: 20px;
+    }
+    </Style>
+</head>
+<body>
+       
+   {{>header}}
+    <main>
+        <div style="background-color: black; border-radius:50px; width:680px; margin:auto">
+        <input type="text" id="search" placeholder="Enter the name of city">
+        <button id="btn">search</button>
+        </div>
+        <div id="display">
+            <div id="time">
+                <div id="day"></div>
+                <div id="date"></div>
+            </div>
+            <div id="city">
+                
+                GET YOUR OUTPUT HERE
+            </div>
+            <div id="temp">
+           
+            </div>
+        </div>
+    </main>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        var arr=['JAN','FEB','MARCH','APRIL','MAY','JUNE','JULY','AUGUST','SEPT','OCT','NOV','DEC'];
+        var days=['MONDAY','TUESDAY','WEDNESDAY','THURSDAY','FRIDAY','SATURDAY','SUNDAY']
+        var date= new Date();
+        $('#date').text(date.getDate()+' '+arr[date.getMonth()]);
+        $('#day').text(days[date.getDay()])
+        async function gettemperature(){
+            try{
+                
+                var api= await fetch("https://api.openweathermap.org/data/2.5/weather?q="+$('#search').val()+"&appid=3db3ee72710aadc48785437145744fe0");
+                api=await api.json();
+                $('#city').text($('#search').val()+",IN");
+                var status=api.weather.main;
+                var tempstatus='';
+                if(status=='Clear'){
+tempstatus= '<i class="fa-solid fa-sun"></i>'
+                }
+                else if(status=='Clouds'){
+                   tempstatus='<i class="fa-solid fa-cloud"></i>'
+                }
+                else if(status='Rain'){
+                    tempstatus='<i class="fa-solid fa-cloud-rain"></i>'
+                }
+                else{
+                    tempstatus= '<i class="fa-solid fa-sun"></i>'
+                }
+                console.log(tempstatus)
+                document.getElementById('temp').innerHTML=(api.main.temp-273+"").slice(0,5)+'°C'+"&nbsp"+"&nbsp"+"&nbsp"+"&nbsp"+"&nbsp"+tempstatus;
+            }
+            catch{
+                document.getElementById('temp').innerText="";
+                alert("enter correct city name")
+                $('#search').val(' ')
+                $('#city').text(" GET YOUR OUTPUT HERE");
+               
+            }
+        }
+        $('#btn').click(
+            ()=>{
+                gettemperature();}
+        )
+    </script>
+</body>
+</html>
